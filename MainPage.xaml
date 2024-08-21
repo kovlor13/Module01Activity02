@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Module01Activity02.MainPage"
+             xmlns:Local ="clr-namespace:Module01Activity02"
+             BackgroundColor="{DynamicResource DynamicLocalBgColor}">
+
+    <ContentPage.Resources>
+        <x:String x:Key="StaticUsername">Sangalang Lorenzo</x:String>
+        <x:String x:Key="DynamicUsername">Nuguid C.J</x:String>
+
+        <Color x:Key="DynamicBoxColor">Magenta</Color>
+        <Color x:Key="DynamicLocalBgColor">Purple</Color>
+
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <Label Text="{Binding Firstname}" 
+                   TextColor="{Binding ColorRed}"/>
+
+            <Label x:Name="StaticResourceLabel" 
+                   Text="{StaticResource StaticUsername}"/>
+
+            <Button Text="Change Label Name"  
+                    Clicked="OnChangedLabelName"/>
+
+            <Label x:Name="DynamicResourceLabel"
+                   Text="{DynamicResource DynamicUsername}"/>
+
+            <Button Text="Change Label Name - Dynamic"
+                    Clicked="OnChangedLabelNameDynamic"/>
+
+            <Button Text="Change BG Color - Sky Blue"
+                    Clicked="OnChangedBgColor"/>
+
+            <Button Text="Change BG Color - Black"
+                    Clicked="OnChangedBgColorB"/>
+
+            <Button Text="Change BG Color - Red"
+                    Clicked="OnChangedBgColorLB"/>
+
+            <BoxView HeightRequest="100"  WidthRequest="100" 
+                     Color="{DynamicResource DynamicBoxColor}"/>
+
+            <Button Text="Change Box Color"
+                    Clicked="OnChangedBoxColor"/>
+
+            <Label Text="{Local:CurrentDateExtension}"
+                   TextColor="White"/>
+
+            <Entry x:Name="MyEntry" 
+                   Placeholder="Type Here Boss"
+                   Text="{Binding Text, Source{x:Reference MyEntry}}"
+                   TextColor="Yellow"/>
+
+            <Label Text="{Binding Source={x:Reference MyEntry}, Path=Text}"
+                  TextColor="White" />
+
+
+
+        </VerticalStackLayout   
+    </ScrollView>
+
+</ContentPage>
